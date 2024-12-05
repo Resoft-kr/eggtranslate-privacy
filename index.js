@@ -4,6 +4,7 @@ function getQueryParam(param) {
 }
 
 const language = getQueryParam('lan');
+const cat = getQueryParam('cat');
 let htmlFile;
 
 switch (language) {
@@ -28,6 +29,8 @@ switch (language) {
 }
 
 
+
+
 fetch(htmlFile)
     .then(response => {
         if (!response.ok) {
@@ -37,8 +40,21 @@ fetch(htmlFile)
     })
     .then(html => {
         document.querySelector('body').innerHTML = html;
+    }).then(() => {
+
+        console.log(document.querySelector(`#${cat}`));
+        document.querySelector(`#${cat}`).scrollIntoView({
+            behavior: 'auto',  
+            block: 'start',
+        }
+
+        );
     })
     .catch(error => {
         console.error('약관 을 불러오는데 실패하였습니다:', error);
         document.querySelector('body').innerText = '약관을 불러오는데 실패하였습니다.';
     });
+
+
+
+
