@@ -41,8 +41,7 @@ fetch(htmlFile)
     .then(html => {
         document.querySelector('body').innerHTML = html;
     }).then(() => {
-        console.log(document.querySelector("#" + cat ));
-        document.querySelector("#" + cat ).scrollIntoView({
+        document.querySelector('#'+cat).scrollIntoView({
             behavior: 'auto',
             block: 'start',
         }
